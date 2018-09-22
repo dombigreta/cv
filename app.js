@@ -3,11 +3,11 @@ const bodyParser = require('body-parser');
 const app = express();
 const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
-const port = process.env.port || 5000;
-const dbUrl = require('./config/keys').mongoDbUri;
 
 app.use(bodyParser.json());
 
+const port = process.env.port || 5000;
+const dbUrl = require('./config/keys').mongoDbUri;
 
 mongoose.connect(dbUrl, (err) => {
     if(err){

@@ -53,6 +53,7 @@ UserSchema.statics.authenticateUser = function(email, password, callback){
                 return callback(user);
             }
             else{
+                var error = new Error("The password is incorrect")
                 return callback();
             }
         })

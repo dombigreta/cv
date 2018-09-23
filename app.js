@@ -19,6 +19,10 @@ app.use(bodyParser.json(),session({     secret:'work hard',
                                         store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
 
+/**Routes */
+const UserAuthRoute = require('./Routes/UserRoute');
+app.use('/user', UserAuthRoute);
+
 const port = process.env.port || 5000;
 
 app.listen(port, () => console.log(`app listens on port: ${port}`));

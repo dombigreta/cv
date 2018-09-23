@@ -5,6 +5,7 @@ const UserMiddleWares = require('../MiddleWares/UserMiddleware');
 
 route.post('/', function(req,res){
     /**if every required fied is filled */
+    console.log("i was called");
     if(req.body.email && req.body.username && req.body.password && req.body.passwordConf){
         var userData = {
             email:req.body.email,
@@ -24,7 +25,7 @@ route.post('/', function(req,res){
     }
 });
 
-router.get('/profile', UserMiddleWares.requiresLogin, function(res,req,err){
+route.get('/profile', UserMiddleWares.requiresLogin, function(res,req,err){
     if(err){
         console.log(`${err}`);
     }
@@ -40,3 +41,5 @@ route.get('/logout', function(req,res,next){
         })
     }
 });
+
+module.exports = route;

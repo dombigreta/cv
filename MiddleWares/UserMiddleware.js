@@ -1,5 +1,6 @@
 module.exports = {
     requiresLogin: function(res,req, next){
+        res.send(session);
         if(req.session && req.sessionUserId){
             return next();
         }

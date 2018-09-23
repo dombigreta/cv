@@ -3,9 +3,8 @@ const route = express.Router();
 const UserSchema = require('../Models/UserModel');
 const UserMiddleWares = require('../MiddleWares/UserMiddleware');
 
+
 route.post('/', function(req,res){
-    /**if every required fied is filled */
-    console.log("i was called");
     if(req.body.email && req.body.username && req.body.password && req.body.passwordConf){
         var userData = {
             email:req.body.email,
@@ -17,7 +16,7 @@ route.post('/', function(req,res){
         UserSchema.create(userData, function(err,user){
             if(err){
                 console.log(`${err}`);
-                res.redirect('/errorpage');
+                res.redirect('/user/errorpage');
             }
             console.log(`${user}`);
         })
@@ -41,5 +40,13 @@ route.get('/logout', function(req,res,next){
         })
     }
 });
+
+route.post('/login', function(req,res){
+        //todo
+})
+
+route.get('/errorpage', function(req,res){
+    res.send('<div>There was an error!</div>');
+})
 
 module.exports = route;

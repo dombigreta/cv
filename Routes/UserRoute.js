@@ -42,7 +42,9 @@ route.get('/logout', function(req,res,next){
 });
 
 route.post('/login', function(req,res){
-        //todo
+    UserSchema.authenticateUser(req.body.email, req.body.password, function(user){
+        res.send(user);
+    });
 })
 
 route.get('/errorpage', function(req,res){

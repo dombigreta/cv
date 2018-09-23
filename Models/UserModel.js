@@ -39,14 +39,14 @@ UserSchema.pre('save', function(next){
     })
 });
 
-UserSchema.statics.authenticateUser = function(email, password, callback){
+UserSchema.statics.authenticateUser = function(email, password, callback){;
     User.findOne({email:email}).exec(function(err, user){
         if(err){
             return callback(err);
         }
         if(!user){
             var error = new Error("User not found");
-            err.status = 401;
+            error.status = 401;
             return callback(error);
         }
         bcrypt.compare(password, user.password,function(err, result){
@@ -55,7 +55,7 @@ UserSchema.statics.authenticateUser = function(email, password, callback){
             }
             else{
                 var error = new Error("The password is incorrect")
-                return callback();
+                return callback(error);
             }
         })
     });

@@ -1,6 +1,6 @@
 const express = require('express');
 const route = express.Router();
-const UserSchema = require('../Models/userModel');
+const UserSchema = require('../Models/UserModel');
 
 route.post('/', function(req,res){
     /**if every required fied is filled */

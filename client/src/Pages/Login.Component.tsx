@@ -9,9 +9,9 @@ import TextField from '@material-ui/core/TextField';
 export default class LoginComponent extends React.Component{
     render(){
         return(
-        <div className="col-4 m-auto">
+        <div className="col-4 mx-auto mt-5">
                 <Card className="d-flex flex-column p-4">
-                    <Typography style={{ marginBottom: '0.5rem',fontSize: '1.9rem',}} color="textSecondary">
+                    <Typography style={{ marginBottom: '0.5rem',fontSize: '1.9rem',color:'#f44336'}} >
                             Login
                     </Typography>
                         <TextField

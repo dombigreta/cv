@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const SALTING_NUMBER = 10
 
 /** this schema is used for creating a new user */
 
@@ -24,6 +26,17 @@ const UserSchema = new mongoose.Schema({
         required:true
     }
 });
+
+UserSchema.pre('save', function(next){
+    const user = this;
+    bcrypt.hash(user.password, SALTING_NUMBER, function(err, hash){
+        if(err){
+            console.log(`${err}`);
+        }
+        user.password = hash;
+        next();
+    })
+})
 
 var User = mongoose.model('User',UserSchema);
 module.exports = User;

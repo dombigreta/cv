@@ -1,7 +1,7 @@
 const express = require('express');
 const route = express.Router();
-const UserSchema = require('../Models/UserModel');
-const UserMiddleWares = require('../MiddleWares/UserMiddleware');
+const UserSchema = require('../models/UserModel');
+const UserMiddleWares = require('../middleWares/UserMiddleware');
 
 
 route.post('/', function(req,res){

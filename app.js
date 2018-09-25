@@ -20,7 +20,7 @@ app.use(bodyParser.json(),session({     secret:'work hard',
 }));
 
 /**Routes */
-const UserAuthRoute = require('./Routes/UserRoute');
+const UserAuthRoute = require('./routes/UserRoute');
 app.use('/user', UserAuthRoute);
 
 const port = process.env.port || 5000;

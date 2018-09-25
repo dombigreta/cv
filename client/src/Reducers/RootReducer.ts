@@ -1,3 +1,8 @@
-export default function getUsers(){
-    console.log('valami');
-}
+import { combineReducers } from 'redux';
+import { userReducer } from './UserLoginReducer';
+
+const rootReducer = combineReducers({
+    userInfo:userReducer
+});
+
+export default rootReducer;

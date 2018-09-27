@@ -1,17 +1,10 @@
 import axios from 'axios';
-export const userActions = {
-    GET_USER_DATA:'GET_USER_DATA'
-}
+import { GET_USER_DATA } from './user_login_action_types';
 
-export function getUserdata(){
-   return function(dispatch){
-    return axios.post('user/login',{email:'dombigreta96@gmail.com', password:'valamiasd'}).
-   then(res => dispatch(getUserDatanonasync(res.data)));
-}}
 
-function getUserDatanonasync(userdata){
+export const logInUserAction = function(userdata){
     return{
-        type:userActions.GET_USER_DATA,
+        type:GET_USER_DATA,
         payload:userdata
     }
 }

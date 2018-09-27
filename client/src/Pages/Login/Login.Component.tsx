@@ -5,12 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'
-import {getUserdata} from '../../Actions/user_login_actions';
+import { logInUser } from '../../Apis/User.Service';
 
-
-interface _props{
-
-}
 
 class LoginComponent extends React.Component<any,any>{
     
@@ -18,12 +14,10 @@ class LoginComponent extends React.Component<any,any>{
         super(props);
 
         this.state = {
-            useremail:'',
+            username:'',
             password:'',
             submitted:false
         }
-
-        console.log(this.props);
     }
 
    _handleChange = (e) => {
@@ -32,18 +26,14 @@ class LoginComponent extends React.Component<any,any>{
    }
     _handleOnSubmit = (e) => {
         e.preventDefault();
+        const {username, password} = this.state;
         this.setState({submitted:true});
-        this.props.getUserData();
-        
+        this.props.logInUser(username, password);
     }
 
-    componentDidUpdate(){
-        console.log(this.props);
-    }
-    
     render(){
-        const {useremail, password, submitted} = this.state;
-        console.log(this.props);
+        const {username, password, submitted} = this.state;
+
         return(
             <div style={{height:'100vh'}} className="d-flex justify-content-center align-items-center">
                 <form name="form" onSubmit={this._handleOnSubmit} className="col-4 flex-1 flex-column">
@@ -55,10 +45,10 @@ class LoginComponent extends React.Component<any,any>{
                                     
                                     id="standard-uncontrolled"
                                     label="Email"
-                                    name="useremail"
-                                    value={useremail}
+                                    name="username"
+                                    value={username}
                                     onChange={this._handleChange}
-                                    error={submitted && !useremail}
+                                    error={submitted && !username}
                                     margin="normal"/>
                                 
                                 <TextField
@@ -79,12 +69,8 @@ class LoginComponent extends React.Component<any,any>{
     }
 }
 
- const mapStateToProps = (state) => {
- 
-    return { userdata:state.userInfo.userdata, isLoggedin:state.userInfo.isLoggedin }};
+ const mapStateToProps = (state) => ({userdata:state.userInfo.userdata, isLoggedin:state.userInfo.isLoggedin });
 
 
-const  mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({getUserData: getUserdata},dispatch);
-}
+const  mapDispatchToProps = (dispatch) =>  bindActionCreators({logInUser: logInUser},dispatch);
 export default connect(mapStateToProps,mapDispatchToProps)(LoginComponent)

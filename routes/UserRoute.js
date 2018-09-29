@@ -42,7 +42,7 @@ route.get('/logout', function(req,res,next){
 });
 
 route.post('/login', function(req,res){
-    UserSchema.authenticateUser(req.body.useremail, req.body.password, function(user){
+    UserSchema.authenticateUser(req.body.username, req.body.password, function(user){
         res.send(user);
     });
 })

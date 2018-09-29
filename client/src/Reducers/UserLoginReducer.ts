@@ -5,7 +5,6 @@ const initialState = {
 }
 
 export const userReducer = function(state = initialState, action){
-    console.log(action);
     switch(action.type){
         case GET_USER_DATA:{
            return Object.assign({}, state, {

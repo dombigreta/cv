@@ -3,8 +3,8 @@ import { logInUserAction } from '../Actions/user_login_actions';
 
 export const logInUser = (username:string, password:string) => {
     return function(dispatch){
-        return axios.post('/user/login',{useremail:username, password:password})
-        .then(res => dispatch(logInUserAction(res.data)))
-        .catch(err => console.log(err));
+        axios.post('/user/login', {username:username, password:password})
+        .then(res => dispatch(res.data))
+        .catch(err =>  {throw err});
     }
 }

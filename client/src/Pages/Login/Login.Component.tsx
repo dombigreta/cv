@@ -3,9 +3,10 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
 import { logInUser } from '../../Apis/User.Service';
+import { Link } from 'react-router-dom';
 
 
 class LoginComponent extends React.Component<any,any>{
@@ -62,7 +63,7 @@ class LoginComponent extends React.Component<any,any>{
                                     margin="normal"/>
                             <Button type="submit" className="primary">Login</Button>
                         </Card>
-                        <div className="mt-3 text-center">Don't you have an account? <Button color="secondary" href="#">Click here</Button> to create one!</div>
+                        <div className="mt-3 text-center">Don't you have an account? <Link to={'/registerpage'}>Click here</Link> to create one!</div>
                 </form>
             </div>
         );
